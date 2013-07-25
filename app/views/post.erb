@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="post">
+    <h2><%= @post.title %></h2>
+    <h3>By: <%= User.find(@post.user_id).name %></h3>
+    <p><%= @post.content %></h2>
+  </div>
+  <ul class="comments">
+    <h4>Comments:</h4>
+    <% @comments.each do |comment| %>
+      <li><%= comment.content %> --<%= User.find(comment.user_id).name %></li>
+    <% end %>
+  </ul>
+   <li><a href="/posts/<%= @post.id %>/new/comment">Leave a comment</a></li>
+</div>

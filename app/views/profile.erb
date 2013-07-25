@@ -1,0 +1,20 @@
+<div class="container">
+  <!-- HEADER -->
+  <!-- NAV  -->
+  <div class="post_list">
+    <h2>Your Posts:</h2>
+    <ul>
+      <% User.find(session[:id]).posts.each do |post| %>
+        <li><a href="/posts/<%=post.id %>/show"><%= post.title %></a>
+          <span><%= post.created_at.to_date %></span></li>
+      <% end %>
+    </ul>
+    <h2>Your comments:</h2>
+    <ul>
+      <% @comments.each do |comment| %>
+        <li><a href="/posts/<%= comment.post_id %>/show"><%= Post.find(comment.post_id).title %></a></li>
+        <li>"<%= comment.content %>"</li>
+      <% end %>
+    </ul>
+  </div>
+</div>
